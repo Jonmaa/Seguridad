@@ -1,0 +1,29 @@
+0.- Descargar Apache
+sudo apt update
+sudo apt install apache2
+
+1.- Configurar servidor Apache segun enunciado
+sudo rm /var/www/html/index.html                     
+sudo nano /var/www/html/index.html                      
+    <h1>Conexion SSL</h1>
+
+2.- Instalar SSL y crear el certificado SSL
+sudo apt install openssl
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
+3.- Configurar Apache para usar SSl
+sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.bak
+sudo nano /etc/apache2/sites-available/default-ssl.conf
+    -> ServerAdmin jmarcos021@ikasle.ehu.eus
+    -> ServerName 34.175.140.2
+    -> SSLCertificateFile      /etc/ssl/certs/apache-selfsigned.crt
+    -> SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+sudo nano /etc/apache2/sites-available/000-default.conf
+    + Redirect permanent "/" "https://34.175.140.2/"
+
+4.- Aplicar cambios en y volver a ejecutar Apache
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo a2ensite default-ssl
+sudo apache2ctl configtest
+sudo systemctl restart apache2
