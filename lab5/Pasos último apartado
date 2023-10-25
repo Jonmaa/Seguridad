@@ -1,0 +1,3 @@
+crontab -e
+elegir nano
+0 12 * * * path al ejecutable o poner aquí el comando directamente
