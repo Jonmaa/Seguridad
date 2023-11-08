@@ -1,0 +1,15 @@
+#Ver los host que están abiertos:
+netstat -ntlp | grep LISTEN (también se puede hacer less docker-compose.yml en este caso)
+
+Los puertos que están abiertos están en el formato host:docker.
+-> 81:80
+-> 8889:3306
+-> 8890:80
+
+Solo están abiertos de por si los puertos: 22, 80 y 443. Por lo que habrá que abrir los puertos 81 y 8890 que son los de la web y el de phpMyAdmin.
+
+#Abrir puertos de Firewall
+Para abrirlos se crea una nueva regla de firewall desde el servidor de google cloud
+
+#Cerrar puertos de Firewall
+Para cerrarlos se crea una nueva regla de firewall desde el servidor de google cloud en la que se rechaza el tráfico entrante de los puertos deseados.
