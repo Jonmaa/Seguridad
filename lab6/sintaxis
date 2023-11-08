@@ -1,0 +1,5 @@
+#Sintaxis al hacer backups en local
+rsync --link-dest= xxxxx . xxxxx
+
+#Sintaxis al hacer backups de forma remota en un servidor
+rsync --link-dest= xxxxx (path relativo respecto a la segunda parte) . usuario@IP/pathabsoluto
