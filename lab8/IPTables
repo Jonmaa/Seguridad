@@ -28,3 +28,5 @@ sudo iptables -A INPUT -p tcp --dport PUERTO -s IP -j ACCEPT
 
 Ej: sudo iptables -A INPUT -p tcp --dport 22 -s 127.0.0.1 -j ACCEPT
 
+Instalar FTP:
+sudo apt-get install vsftpd
