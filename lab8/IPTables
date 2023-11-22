@@ -25,3 +25,6 @@ sudo iptables -A INPUT -i lo -j ACCEPT
 
 Aceptar todo el tráfico en el puerto especificado (80 HTTP, 443 HTTPS, 22 SSH):
 sudo iptables -A INPUT -p tcp --dport PUERTO -s IP -j ACCEPT
+
+Ej: sudo iptables -A INPUT -p tcp --dport 22 -s 127.0.0.1 -j ACCEPT
+
